@@ -1,4 +1,4 @@
-package Java.TD2;
+package Java.TD3;
 
 public class ThreadPlus extends Thread {
     private int incr;
@@ -12,8 +12,9 @@ public class ThreadPlus extends Thread {
     @Override
     public void run() {
         for (int i = 0; i < 1000; i++) {
-            valeur.x += incr;
-            System.out.printf("Thread +%d: %d\n", incr, valeur.x);
+            synchronized (this.valeur) {
+                valeur.x += incr;
+            }
         }
     }
 }

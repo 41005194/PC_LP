@@ -1,4 +1,4 @@
-package Java.TD2;
+package Java.TD3;
 
 public class ThreadMoins extends Thread {
     private int decr;
@@ -12,8 +12,9 @@ public class ThreadMoins extends Thread {
     @Override
     public void run() {
         for (int i = 0; i < 1000; i++) {
-            valeur.x -= decr;
-            System.out.printf("Thread -%d: %d\n", decr, valeur.x);
+            synchronized (this.valeur) {
+                valeur.x -= decr;
+            }
         }
     }
 }
